@@ -2,7 +2,7 @@
 """ Basic flask app
 """
 from flask import Flask, render_template, Response, request, g
-from flask_babel import Babel # type: ignore
+from flask_babel import Babel, format_datetime # type: ignore
 from typing import Dict
 import pytz
 
@@ -30,6 +30,7 @@ users = {
 
 @app.route('/')
 def welcome() -> Response:
+    g.time = format_datetime()
     return Response(render_template('5-index.html'), mimetype='text/html')
 
 @babel.localeselector

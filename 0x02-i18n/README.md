@@ -102,6 +102,45 @@ In your HTML template, if a user is logged in, in a paragraph tag, display a wel
 | logged_in_as | "You are logged in as %(username)s." | "Vous êtes connecté en tant que %(username)s." |
 | not_logged_in | "You are not logged in." | "Vous n'êtes pas connecté." |
 
-![Visiting http://127.0.0.1:5000/ in your browser should display this:](./hello_world.png)
-![Visiting http://127.0.0.1:5000/?login_as=2 in your browser should display this:](./beyonce_img.png)
+Visiting http://127.0.0.1:5000/ in your browser should display this:
+Hello World!
+You are not logged in.
 
+Visiting http://127.0.0.1:5000/?login_as=2 in your browser should display this:
+Hello World!
+You are logged in as Beyonce.
+
+### Use user locale
+Change your get_locale function to use a user’s preferred local if it is supported.
+
+The order of priority should be
+
+- Locale from URL parameters
+- Locale from user settings
+- Locale from request header
+- Default locale
+
+Test by logging in as different users
+files: [6-app.py](./6-app.py), [templates/6-index.html](./templates/6-index.html)
+
+### Infer appropriate time zone
+Define a get_timezone function and use the babel.timezoneselector decorator.
+
+The logic should be the same as get_locale:
+
+- Find timezone parameter in URL parameters
+- Find time zone from user settings
+- Default to UTC
+
+Before returning a URL-provided or user time zone, you must validate that it is a valid time zone. To that, use pytz.timezone and catch the pytz.exceptions.UnknownTimeZoneError exception.
+Files: [7-app.py](./7-app.py), [templates/7-index.html](./templates/7-index.html)
+
+### Display the current time
+Based on the inferred time zone, display the current time on the home page in the default format. For example:
+
+Jan 21, 2020, 5:55:39 AM or 21 janv. 2020 à 05:56:28
+
+Use the following translations
+| msgid | English | French |
+| ----- | ------- | ------ |
+| current_time_is | "The current time is %(current_time)s." | "Nous sommes le %(current_time)s." |
