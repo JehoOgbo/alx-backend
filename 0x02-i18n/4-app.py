@@ -22,7 +22,7 @@ babel = Babel(app)
 
 @app.route('/')
 def welcome() -> Response:
-    return Response(render_template('3-index.html'), mimetype='text/html')
+    return Response(render_template('4-index.html'), mimetype='text/html')
 
 @babel.localeselector
 def get_locale() -> str:
