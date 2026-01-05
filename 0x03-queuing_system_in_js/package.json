@@ -1,0 +1,22 @@
+{
+  "name": "0x03-queuing_system_in_js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "babel-node --presets @babel/preset-env"
+  },
+  "dependencies": {
+    "bull": "^4.16.5",
+    "kue": "^0.11.6",
+    "redis": "^5.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/node": "^7.28.0",
+    "@babel/preset-env": "^7.28.5",
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
+  }
+}
